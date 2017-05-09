@@ -1,0 +1,3 @@
+Installation
+
+The system depends on Spark and Proton. The first I believe anyone who works with Big Data should be able to install it, so I will skip it. As for Proton, it can be installed with the command pip install python-qpid-proton
