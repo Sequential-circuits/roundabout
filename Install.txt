@@ -1,7 +1,19 @@
-Installation
+Installation and use
 
 The system depends on Spark and Proton. The first I believe anyone who works with Big Data should be able to install it, so I will skip it.
 
 As for Proton, it can be installed with the command pip install python-qpid-proton.
 
-Please note that Python 3.6 is not compatible with Spark Streaming.
+To run the system, just type python car.py from the folder you downloaded the system and you´ll see the script generating data and complaining it cannot connect with Spark. To run the roundabout, open a new screen and type in that same folder spark-submit roundabout.py 
+
+Please note that Python 3.6 is not compatible with Spark Streaming. In this case, you get a message such as:
+ from pyspark import SparkContext, SparkConf
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 950, in _find_and_load_unlocked
+etc etc...
+Should you have it installed and your python was installed with Anaconda (which I highly recommend as it comes with all the packages you could dream of), you can try typing conda create -n py35 python=3.5 anaconda and then source activate py35 to activate python 3.5. In this case you will need to also install proton in this python version too as instructed above.
+
+You will see in the roundabout screen it receiving the data from the car, and in the car screen it getting data back from the roundabout.
+
+
+
