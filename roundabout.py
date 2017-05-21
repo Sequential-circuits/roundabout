@@ -29,22 +29,17 @@ class Send(MessagingHandler):
     def on_accepted(self, event):
         self.confirmed += 1
         if self.confirmed == self.total:
-            print("all messages confirmed")
+            print("Messages sent")
             event.connection.close()
             self.acceptor.close()
 
     def on_disconnected(self, event):
         self.sent = self.confirmed
 
-parser = optparse.OptionParser(usage="usage: %prog [options]",
-                               description="Send messages to the supplied address.")
-parser.add_option("-a", "--address", default="localhost:5672/examples",
-                  help="address to which messages are sent (default %default)")
-parser.add_option("-m", "--messages", type="int", default=100,
-                  help="number of messages to send (default %default)")
+parser = optparse.OptionParser(usage="usage: %prog [options]",description="Send messages to the supplied address.")
+parser.add_option("-a", "--address", default="localhost:5672/examples",help="address to which messages are sent (default %default)")
+parser.add_option("-m", "--messages", type="int", default=100,help="number of messages to send (default %default)")
 opts, args = parser.parse_args()
-
-
 
 def quiet_logs( sc ):
   logger = sc._jvm.org.apache.log4j
@@ -55,7 +50,7 @@ def sendRecord(tup):
     try:
         Container(Send(opts.address, opts.messages)).run()
     except KeyboardInterrupt: pass
-    print ("sent")
+    print ("Sent message back to car")
     
 if __name__ == "__main__":
     conf = SparkConf().setAppName("using foreachRDD and foreach on RDD")
