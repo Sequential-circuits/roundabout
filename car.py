@@ -19,8 +19,8 @@ PORT = 9999
 # The time between generated events
 EVENT_PERIOD_SECONDS = 1
 # Fake data for random events
-USERS = ['user-{}'.format(i) for i in range(10)]
-EVENTS = ['login', 'purchase']
+USERS = ['user-{}'.format(i) for i in range(1)]
+EVENTS = ['Data1', 'Data2']
 
 class Recv(MessagingHandler):
     def __init__(self, url, count):
@@ -44,10 +44,8 @@ class Recv(MessagingHandler):
                 event.connection.close()
 
 parser = optparse.OptionParser(usage="usage: %prog [options]")
-parser.add_option("-a", "--address", default="localhost:5672/examples",
-                  help="address from which messages are received (default %default)")
-parser.add_option("-m", "--messages", type="int", default=100,
-                  help="number of messages to receive; 0 receives indefinitely (default %default)")
+parser.add_option("-a", "--address", default="localhost:5672/examples",help="address from which messages are received (default %default)")
+parser.add_option("-m", "--messages", type="int", default=100,help="number of messages to receive; 0 receives indefinitely (default %default)")
 opts, args = parser.parse_args()
 
 
@@ -68,7 +66,7 @@ def run_server(host, port, queue):
             while True:
                 line = queue.get()
                 self.request.sendall(str.encode(line))
-                print ("sendall",line)
+                print ("Sent data:",line)
 
     server = socketserver.TCPServer((host, port), QueueTCPHandler)
     server.serve_forever()
@@ -79,7 +77,7 @@ if __name__ == '__main__':
     server_thread = Thread(target=run_server, args=(HOST, PORT, input_queue,))
     server_thread.daemon = True
     server_thread.start()
-    print ("start server")
+    print ("Started server")
 
     while True:
         input_queue.put(generate_event(USERS, EVENTS) + '\n')
