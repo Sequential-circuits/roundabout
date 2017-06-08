@@ -1,4 +1,5 @@
 # roundabout
+<img src="https://media.licdn.com/media-proxy/ext?w=800&h=800&f=none&hash=vsQF9tveq3yN5hGIaAZJTzugBCs%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta9Er0Vinkhwfjw8177yE41y87UNCVordEGXyD3u0qYrdf3TgL5TaLbKiuV9AcSkclAI2K_KgR2W0D5e4K4O9ddtwjZLlII27dA4BYBI3iSdf4tY">
 A Big Data architecture based on a 2-way data transmission using Spark Streaming and multiple scripts.
 
 Modern cities replaced the stop lights in its traffic system for roundabouts. These, besides requiring no maintenance, prevent collisions, and improve traffic flow in general. In a similar way, Big Data systems today rely on semaphore-based systems in which one script can only run after the other has started, of after it has received some data, etc. This eventually becomes a nightmare to manage and are thus prone to failure.
